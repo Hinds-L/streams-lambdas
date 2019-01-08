@@ -26,7 +26,11 @@ public class WeirdStream {
         .sorted(new Comparator<Integer>() {
           @Override
           public int compare(Integer o1, Integer o2) {
-            return o1.compareTo(o2);
+            int result = Integer.bitCount(o1) - Integer.bitCount(o2);
+            if (result == 0){
+              result = o1 - o2;
+            }
+            return result;
           }
         })
         .forEach(
