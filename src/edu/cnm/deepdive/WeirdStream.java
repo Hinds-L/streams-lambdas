@@ -1,6 +1,7 @@
 package edu.cnm.deepdive;
 
 import java.security.SecureRandom;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.function.IntConsumer;
 import java.util.function.IntSupplier;
@@ -22,7 +23,12 @@ public class WeirdStream {
     })
         .limit(1000)
         .boxed()
-        .sorted()
+        .sorted(new Comparator<Integer>() {
+          @Override
+          public int compare(Integer o1, Integer o2) {
+            return o1.compareTo(o2);
+          }
+        })
         .forEach(
           System.out::println);
   }
