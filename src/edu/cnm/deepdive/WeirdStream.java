@@ -11,17 +11,8 @@ import java.util.stream.IntStream;
 public class WeirdStream {
 
   public static void main(String[] args) {
-    IntStream.generate(new IntSupplier() {
-        private Random rng;
-      {
-        rng = new Random(-1);
-      }
-
-      @Override
-      public int getAsInt() {
-        return rng.nextInt();
-      }
-    })
+    Random rng = new Random(-1); // Reproducible sequence.
+    IntStream.generate(() -> rng.nextInt())
         .limit(1000)
         .boxed()
         .sorted(new Comparator<Integer>() {
@@ -34,7 +25,7 @@ public class WeirdStream {
             return result;
           }
         })
-        .map(value -> Integer.toBinaryString(value))
+        .map(Integer::toBinaryString)
         .forEach(System.out::println);
   }
 
