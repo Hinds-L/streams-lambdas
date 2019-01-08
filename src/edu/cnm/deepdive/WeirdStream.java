@@ -11,15 +11,14 @@ public class WeirdStream {
   public static void main(String[] args) {
     IntStream.generate(new RandomSupplier())
         .limit(1000)
-        .forEach(value -> {
-          System.out.println(value);
-        });
+        .forEach(
+          System.out::println);
   }
   private static class RandomSupplier implements IntSupplier{
 
     private Random rng;
     {
-      rng = new SecureRandom();
+      rng = new Random(-1);
     }
 
     @Override
