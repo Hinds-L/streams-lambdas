@@ -12,7 +12,7 @@ public class WeirdStream {
 
   public static void main(String[] args) {
     Random rng = new Random(-1); // Reproducible sequence.
-    IntStream.generate(() -> rng.nextInt())
+    IntStream.generate( rng::nextInt)
         .limit(1000)
         .boxed()
         .sorted(new Comparator<Integer>() {
