@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-public class WeirdStream {
+public WeirdStream {
 
   public static void main(String[] args) {
     Random rng = new Random(-1); // Reproducible sequence.
